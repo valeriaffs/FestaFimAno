@@ -1,5 +1,7 @@
 package com.devmasterteam.festafimano.views;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,15 +11,21 @@ import com.devmasterteam.festafimano.R;
 import com.devmasterteam.festafimano.constats.FimDeAnoConstants;
 import com.devmasterteam.festafimano.util.SecurityPreferences;
 
+
 public class DestailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewHolder mViewHolder = new ViewHolder();
     private SecurityPreferences mSecurityPreferences;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destails);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher_background);
+
         this.mSecurityPreferences = new SecurityPreferences(this);
         this.mViewHolder.checkParticipate = findViewById(R.id.check_participate);
         this.mViewHolder.checkParticipate.setOnClickListener(this);

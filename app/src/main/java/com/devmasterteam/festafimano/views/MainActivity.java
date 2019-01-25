@@ -1,6 +1,8 @@
 package com.devmasterteam.festafimano.views;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,16 +16,22 @@ import com.devmasterteam.festafimano.util.SecurityPreferences;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewHolder mViweHolder = new ViewHolder();
     private SecurityPreferences mSecurityPreferences;
     private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher_background);
 
         this.mViweHolder.textToday = findViewById(R.id.text_today);
         this.mViweHolder.textDaysLeft = findViewById(R.id.text_days_left);
